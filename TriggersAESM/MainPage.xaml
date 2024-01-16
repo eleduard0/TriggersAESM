@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TriggersAESM.MainPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Practica triggers" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        
+        
+        <RadioButton Margin="5,10,5,0" Content="Aceptar">
+            <RadioButton.Triggers>
+                <Trigger TargetType="RadioButton" Property="IsChecked"
+                         Value="True">
+                    <Setter Property="TextColor" Value="Green"/>
+                    <Setter Property="FontAttributes" Value="Bold"/>
+                </Trigger>
+            </RadioButton.Triggers>
+        </RadioButton>
+        <RadioButton Margin="5,10,5,0" Content="Cancelar">
+            <RadioButton.Triggers>
+                <Trigger TargetType="RadioButton" Property="IsChecked"
+                         Value="True">
+                    <Setter Property="TextColor" Value="Red"/>
+                    <Setter Property="FontAttributes" Value="Bold"/>
+                </Trigger>
+            </RadioButton.Triggers>
+        </RadioButton>
+        <Entry x:Name="entry"
+       Text=""
+       Placeholder="Campo obligatorio" />
+
+        <Button x:Name="button" Text="Aceptar"
+        
+        HorizontalOptions="Center">
+            <Button.Triggers>
+                <DataTrigger TargetType="Button"
+                     Binding="{Binding Source={x:Reference entry},
+                                       Path=Text.Length}"
+                     Value="0">
+                    <Setter Property="IsEnabled" Value="False" />
+                    <!-- multiple Setters elements are allowed -->
+                </DataTrigger>
+            </Button.Triggers>
+        </Button>
+
+        
+        <CheckBox Color="Aquamarine" >
+            <CheckBox.Triggers>
+                <Trigger TargetType="CheckBox" Property="IsChecked"
+                         Value="True">
+                    <Setter Property="Color" Value="CadetBlue"/>
+                    
+                </Trigger>
+            </CheckBox.Triggers>
+        </CheckBox>
+
+    </StackLayout>
+
+</ContentPage>
